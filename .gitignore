@@ -60,5 +60,7 @@ uploads/
 .turbo/
 .parcel-cache/
 
-# Local screenshots directory (untracked)
-screenshots/
+# Local screenshots directory (untracked scratch captures)
+/screenshots/
+!docs/screenshots/
+!docs/screenshots/*
