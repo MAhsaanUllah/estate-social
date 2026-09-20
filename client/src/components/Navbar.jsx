@@ -381,14 +381,14 @@ function Navbar() {
                 >
                   Log in
                 </button>
-                <button
-                  type="button"
+                <Button 
+                  variant="secondary" 
+                  size="sm" 
+                  className="h-10 px-4 rounded-xl text-xs font-bold"
                   onClick={() => openAuth('register')}
                 >
-                  <Button variant="secondary" size="sm" className="h-10 px-4 rounded-xl text-xs font-bold">
-                    Join Us
-                  </Button>
-                </button>
+                  Join Us
+                </Button>
               </div>
             )}
           </div>
