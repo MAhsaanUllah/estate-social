@@ -13,15 +13,21 @@ export default function Button({
   const baseStyles = 'inline-flex items-center justify-center font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none';
 
   const variants = {
-    primary: 'bg-gray-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-xl hover:bg-black dark:hover:bg-white active:scale-[0.98]',
-    secondary: 'bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-900 dark:text-zinc-100 rounded-xl hover:bg-gray-50 dark:hover:bg-zinc-800 active:scale-[0.98]',
-    ghost: 'text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-zinc-100 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg',
+    emerald: 'bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl shadow-sm hover:shadow-md transition-all active:scale-[0.98]',
+    primary: 'bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl shadow-sm hover:shadow-md transition-all active:scale-[0.98]',
+    dark: 'bg-gray-900 hover:bg-black text-white rounded-xl shadow-sm hover:shadow-md transition-all active:scale-[0.98]',
+    black: 'bg-gray-900 hover:bg-black text-white rounded-xl shadow-sm hover:shadow-md transition-all active:scale-[0.98]',
+    secondary: 'bg-white border border-gray-200 hover:border-gray-300 text-gray-800 rounded-xl hover:bg-gray-50 active:scale-[0.98]',
+    outline: 'bg-white border border-gray-200 hover:border-gray-300 text-gray-800 rounded-xl hover:bg-gray-50 active:scale-[0.98]',
+    ghost: 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-colors',
+    danger: 'bg-red-600 hover:bg-red-700 text-white rounded-xl active:scale-[0.98]',
   };
 
   const sizes = {
-    default: 'h-10 px-5 text-sm',
-    lg: 'h-11 px-5 text-base',
-    sm: 'h-9 px-4 text-xs',
+    default: 'h-10 px-5 text-sm font-semibold',
+    lg: 'h-12 px-6 text-base font-bold',
+    sm: 'h-9 px-4 text-xs font-semibold',
+    xs: 'h-8 px-3 text-xs font-medium',
   };
 
   return (
