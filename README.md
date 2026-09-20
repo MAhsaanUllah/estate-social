@@ -1,64 +1,113 @@
 # EstateSocial Pakistan
 
-> A social-first property marketplace built for Pakistani real estate dynamics.
+> A social-first MERN property marketplace built around Pakistani real-estate workflows.
+
+[![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.x-000000?logo=express&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.x-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Build Status](https://img.shields.io/badge/Build-Passing-emerald)](https://github.com/MAhsaanUllah/estate-social)
+
+---
+
+![EstateSocial Pakistan Marketplace](docs/screenshots/marketplace.png)
 
 ---
 
 ## Overview
 
-**EstateSocial Pakistan** is a web-based property marketplace that connects property buyers, direct owners, real estate agents, and agencies across Pakistan. The platform blends traditional property listings with social creator profiles (`/@username`), direct WhatsApp lead communication, category-specific Pakistani property attributes, and an administrative identity verification workflow.
+**EstateSocial Pakistan** is a full-stack real-estate web application connecting property buyers, direct owners, agents, and agencies across Pakistan. The platform bridges the gap between conventional property listing boards and modern social discovery by combining category-specific real estate schemas, public creator profiles (`/@username`), direct WhatsApp lead generation, and an administrative verification review workflow.
+
+The application is structured to address the specific domain realities of Pakistani real estate: handling localized area measurements (Marla, Kanal, Sq. Yd.), currency scales (PKR Lakh and Crore), society-specific taxonomy (DHA, Bahria Town, Gulberg, CDA Sectors), and direct owner 0% commission deals alongside verified agency stock.
+
+---
+
+## Why I Built This
+
+I built EstateSocial as a comprehensive, end-to-end capstone project to move beyond isolated tutorial exercises and build a complete, resilient MERN application from scratch. My goal was to engineer the full lifecycle of a production-style web service: designing domain-driven Mongoose schemas, structuring Redux state management across multi-step user journeys, implementing server-side role-based access controls and IDOR protection, handling sensitive data projection, writing automated adversarial API test suites, and preparing the architecture for cloud deployment.
+
+---
+
+## Product Walkthrough
+
+*Screenshots below showcase the core interfaces across buyer, seller, and administrator flows.*
+
+### 1. Marketplace Discovery & Filtering
+![Marketplace Discovery](docs/screenshots/marketplace.png)
+*Multi-parameter search engine supporting city, society, price range, area size, property category, and direct owner vs. agency filters.*
+
+### 2. Property Details & Direct Contact
+![Property Details View](docs/screenshots/property-details.png)
+*Comprehensive listing breakdown featuring dynamic property specifications, photo gallery, installment plans, location map, and direct 1-click WhatsApp lead CTA.*
+
+### 3. Dynamic Property Listing Creation
+![Add Property Form](docs/screenshots/add-property.png)
+*Context-aware listing creation form that adapts its fields based on selected property type (Commercial, House, Plot, Apartment, Farmhouse).*
+
+### 4. Agent Creator Profile (`/@username`)
+![Agent Creator Profile](docs/screenshots/agent-profile.png)
+*Sharable social profile for verified realtors with active inventory, video tour embeds (YouTube/TikTok), deal metrics, and direct WhatsApp contact buttons.*
+
+### 5. Owner & Agent CRM Dashboard
+![User Dashboard](docs/screenshots/dashboard.png)
+*Portfolio and inquiry management hub where users track received buyer leads, manage listing statuses, update profile settings, and submit identity verification documents.*
+
+### 6. Admin Moderation & Verification Console
+![Admin Console](docs/screenshots/admin-console.png)
+*Restricted administrative portal for reviewing submitted CNIC and FBR NTN documentation, approving agent verification badges, and monitoring platform metrics.*
 
 ---
 
 ## Core Features
 
-- **Property Marketplace**: Browse active residential, commercial, plot, and agricultural listings across major Pakistani cities (Lahore, Karachi, Islamabad, Rawalpindi, Peshawar, Faisalabad, etc.).
-- **Localized Property Categories**: Custom attribute schemas for Houses, Commercial Plazas, Residential/Commercial Plots, Apartments, and Farmhouses.
-- **Search & Multi-Filter Engine**: Filter by city, society/location, price range (PKR Lakh/Crore), area size (Marla/Kanal/Sq. Yd.), property type, and purpose (Sale/Rent).
-- **Social Creator Profiles (`/@username`)**: Dedicated public profiles for real estate agents and direct owners with contact information, portfolio counts, video tour embeds (YouTube/TikTok), and social handles.
-- **Direct WhatsApp Lead Flow**: One-click WhatsApp contact buttons pre-filled with property title, price, and inquiry details formatted for Pakistani mobile numbers (`+923xx`).
-- **Authentication & RBAC**: Role-based access control supporting `buyer`, `agent`, `owner`, and `admin` roles with JWT authentication and bcrypt password encryption.
-- **Identity & KYC Submission Workflow**: Authenticated users can submit CNIC numbers, FBR NTN registration data, and authority certificates for administrative review.
-- **Admin Moderation Console**: Protected administration queue for reviewing identity verification requests, moderating listings, and viewing platform statistics.
-- **Responsive & PWA Ready**: Mobile-optimized layouts, service worker caching, and installable web app manifest.
+### 🏢 Marketplace & Discovery
+- **Multi-Filter Search**: Filter by purpose (Sale/Rent), property type, city, society/phase, price boundaries, and area units.
+- **Direct Owner Deals**: Dedicated filter to discover 100% direct-owner properties with zero broker commissions.
+- **Interactive Calculators**: Integrated tools for Bank Home Loans (Meezan/HBL Islamic financing), Construction Cost estimations (Grey structure vs. Finishing), and Land Unit conversions.
+
+### ✍️ Listing Management
+- **Category-Aware Attributes**: Dynamic input fields that adjust depending on whether the listing is a Commercial Plaza, Residential Villa, Residential Plot, or Farmhouse.
+- **Media Upload Pipeline**: Support for Cloudinary cloud hosting with local filesystem upload fallbacks and MIME/extension validation.
+- **Listing Lifecycle**: Full CRUD capabilities with status tracking (`Active`, `UnderOffer`, `Sold`).
+
+### 📱 Social Distribution
+- **Custom Handle Routing**: Unique handle URLs (`/@username`) allowing agents to link their portfolio directly in their TikTok, Instagram, and YouTube bios.
+- **One-Click WhatsApp Integration**: Auto-formats Pakistani phone numbers (`03xx` to `923xx`) and pre-populates inquiries with property title, price, and URL.
+
+### 🛡️ Identity & Moderation
+- **KYC Submission Workflow**: Authenticated users can submit CNIC numbers, FBR NTN registration numbers, and housing society member certificates for verification.
+- **Admin Review Queue**: Role-guarded endpoints allowing administrators to inspect pending verifications, approve trust badges, or reject submissions with feedback.
 
 ---
 
-## Pakistan-Specific Experience
+## Pakistan-Specific Engineering
 
-- **Units of Measure**: Native support for Marla, Kanal, Square Feet, and Square Yards with built-in area converters.
-- **Currency Formatting**: Automatic price formatting in Pakistani Rupees (PKR), Lakhs (`Lac`), and Crores (`Arab`).
-- **Localized Property Attributes**:
-  - *Commercial*: Rental income yield, total floors, road width exposure, standby generator power backup.
-  - *Residential*: Servant quarters, dirty/clean kitchens, solar net metering, car parking capacity.
-  - *Plots*: Corner, Main Boulevard, Park facing, possession status.
-  - *Apartments*: Floor level, view orientation, dedicated parking slots.
-- **Society & Location Selectors**: Coverage for DHA, Bahria Town, Gulberg, CDA Sectors, Clifton, Emaar Oceanfront, and other major developments.
+Modeling Pakistani real estate required addressing non-standard domain constraints:
 
----
+### 1. Area Measurement System
+Traditional international real estate software assumes Square Feet or Square Meters. Pakistani property transactions primarily operate on **Marla** and **Kanal**:
+- **Marla variations**: 225 sq. ft. (standard LDA/commercial societies) vs. 272 sq. ft. (traditional revenue records).
+- **Kanal**: Exactly 20 Marlas.
+- **Square Yards (`Guz`)**: Commonly used for plots and residential land in Karachi and Sindh.
 
-## Tech Stack
+### 2. South Asian Currency Scale (`PKR`)
+Instead of standard millions/billions formatting, Pakistani currency is displayed in **Lakh** and **Crore**:
+$$\text{1 Lakh (Lac)} = 100,000 \text{ PKR } (10^5)$$
+$$\text{1 Crore (Cr)} = 10,000,000 \text{ PKR } (10^7)$$
+$$\text{1 Arab} = 1,000,000,000 \text{ PKR } (10^9)$$
 
-### Frontend
-- **Framework**: React 18
-- **Build Tool**: Vite 8
-- **State Management**: Redux Toolkit
-- **Styling**: Tailwind CSS
-- **Routing**: React Router v6
-- **Icons & UI**: Lucide React
-- **SEO & Meta**: React Helmet Async
+The formatting engine dynamically converts raw integer prices into readable, localized denominations (e.g., `85000000` $\rightarrow$ `PKR 8.50 Cr`).
 
-### Backend
-- **Runtime**: Node.js
-- **Framework**: Express.js (REST API)
-- **Database**: MongoDB with Mongoose ODM
-- **Authentication**: JSON Web Tokens (JWT) & bcryptjs
-- **Security Middleware**: Helmet, HPP, express-mongo-sanitize, express-rate-limit
-- **Media Uploads**: Multer (Local storage fallback / Cloudinary integration)
+### 3. Specialized Property Schemas
+Different property categories require distinct physical attributes:
+- **Commercial Plazas**: Monthly rental income yield, total floors, road width exposure, standby generator power backup.
+- **Residential Houses**: Servant quarters, dirty/clean kitchen separation, covered car porch capacity, solar net metering.
+- **Plots & Land**: Corner plot status, Main Boulevard frontage, Park facing orientation, possession readiness.
 
 ---
 
-## Architecture
+## Engineering Highlights
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -77,37 +126,165 @@
 └─────────────────────────────────────────────────────────┘
 ```
 
+### 1. Dynamic Property Schema Modeling
+Rather than forcing sparse or untyped structures, the Mongoose `Listing` schema models polymorphic property types with dedicated sub-attributes (e.g., `rentalIncome`, `roadWidth`, `powerBackup` for commercial; `kitchens`, `servantQuarters` for residential).
+
+### 2. Strict IDOR Authorization
+All mutating endpoints (`PUT /api/listings/:id`, `DELETE /api/listings/:id`) enforce server-side ownership checks:
+```javascript
+if (listing.creator.toString() !== req.user.id && req.user.role !== 'admin') {
+  return res.status(403).json({ success: false, message: 'Unauthorized mutation' });
+}
+```
+
+### 3. Public vs. Private Data Projections
+To protect user privacy and prevent data harvesting, public agent endpoints (`GET /api/users/:id`, `GET /api/users/agents`) explicitly whitelist safe projection fields (`PUBLIC_AGENT_FIELDS`). Sensitive identity fields (`cnic`, `ntn`, `kycData`, `password`) are set to `select: false` at the schema level and are only accessible by the owner or authenticated administrators.
+
+### 4. Query Boundary Enforcement & ReDoS Protection
+- Pagination query parameters are strictly bounded on the backend (`limit = Math.min(50, Math.max(1, limit))`) to prevent memory exhaustion attacks.
+- Search filters sanitize user input through regex escaping (`escapeRegex`) before executing MongoDB queries to neutralize ReDoS (Regular Expression Denial of Service) and operator injection attempts.
+
+### 5. Fail-Fast Production Database Mode
+When `NODE_ENV=production`, the database configuration disables in-memory fallbacks and halts process execution immediately (`process.exit(1)`) upon connection failure, preventing data loss or silent persistence degradation.
+
 ---
 
-## Repository Structure
+## Tech Stack
+
+### Frontend
+- **React 18** — Component-driven user interface
+- **Vite 8** — Optimized build tooling and Hot Module Replacement
+- **Redux Toolkit** — Global state management for authentication, listings, inquiries, and favorites
+- **React Router v6** — Client-side routing with route guards (`ProtectedRoute`, `AgentRoute`)
+- **Tailwind CSS** — Utility-first styling with standardized 60-30-10 color hierarchy
+- **Lucide React** — Consistent icon set
+- **React Helmet Async** — Dynamic document titles and OpenGraph meta tags
+- **Vite PWA Plugin** — Service worker caching and web application manifest
+
+### Backend
+- **Node.js & Express.js** — Modular REST API with centralized error handling middleware
+- **MongoDB & Mongoose 8** — NoSQL database with schema validations, indexes, and aggregation pipelines
+- **JSON Web Tokens (JWT)** — Stateless authentication via authorization headers and HTTP-only cookies
+- **bcryptjs** — Salted password hashing (cost factor 12)
+- **Security Middleware**: `helmet` (HTTP header hardening), `express-mongo-sanitize` (NoSQL injection defense), `hpp` (parameter pollution prevention), `express-rate-limit` (endpoint throttling)
+- **Multer** — Multipart file upload processing
+
+---
+
+## Project Structure
 
 ```
 estate-social/
 ├── client/
-│   ├── public/              # Static assets, icons, manifest
+│   ├── public/              # Static assets, icons, manifest.webmanifest
 │   ├── src/
-│   │   ├── api/             # Axios instance & interceptors
-│   │   ├── components/      # Reusable UI & layout components
-│   │   ├── pages/           # Application views & routed pages
-│   │   ├── redux/           # Redux slices and store configuration
-│   │   └── utils/           # Formatters, constants, calculations
+│   │   ├── api/             # Axios instance & request/response interceptors
+│   │   ├── components/      # Reusable UI (Button, Input, FeedCard, Navbar, Modals)
+│   │   ├── context/         # ThemeContext (Default light theme)
+│   │   ├── pages/           # Routed page views (Landing, Feed, ListingDetails, Dashboard, Admin)
+│   │   ├── redux/           # Redux slices (authSlice, listingSlice, inquirySlice, favoriteSlice)
+│   │   └── utils/           # Formatters (PKR currency, area units, WhatsApp links)
 │   ├── package.json
 │   └── vite.config.js
 │
 ├── server/
-│   ├── config/              # Database connection & seed definitions
-│   ├── controllers/         # REST API business logic
-│   ├── middleware/          # Auth, role check, error handling, rate limiting
-│   ├── models/              # Mongoose schemas (User, Listing, Inquiry, etc.)
-│   ├── routes/              # Express API route declarations
-│   ├── scripts/             # Dev seeding & admin bootstrap utilities
+│   ├── config/              # MongoDB connection (db.js) & Cloudinary storage
+│   ├── controllers/         # API controllers (auth, listing, inquiry, review, valuation)
+│   ├── middleware/          # authMiddleware, errorMiddleware, rateLimiters
+│   ├── models/              # Mongoose schemas (User, Listing, Inquiry, Review, Favorite)
+│   ├── routes/              # Express route declarations
+│   ├── scripts/             # bootstrapAdmin.js, seedDev.js
 │   ├── test-hardening.js    # Comprehensive automated test suite
-│   ├── index.js             # API entrypoint & middleware pipeline
+│   ├── index.js             # Server entrypoint
 │   └── package.json
 │
-├── .gitignore
+├── docs/
+│   └── screenshots/         # Application interface walkthrough screenshots
 ├── .env.example
+├── .gitignore
 └── README.md
+```
+
+---
+
+## Security Practices
+
+EstateSocial implements defense-in-depth security controls across the stack:
+
+- **Authentication & Token Integrity**: Custom JWT validation rejecting missing, expired, malformed, or tampered tokens.
+- **Mass-Assignment Defense**: Explicit field whitelisting on registration and profile updates, stripping protected fields (`role`, `verified`, `kycStatus`, `kycData`).
+- **Targeted Rate Limiting**: Dedicated rate limiters on authentication endpoints (20 req/15 min) and KYC submission endpoints (10 req/15 min).
+- **NoSQL Injection Sanitization**: Stripping `$` and `.` operators from request payloads using `express-mongo-sanitize`.
+- **Safe External Link Generation**: Strict protocol validation (`http://`, `https://`) for user-submitted social media links and normalized WhatsApp URL generation (`https://wa.me/923XXXXXXXXX`).
+
+> *Note: These controls reflect standard web development security practices to mitigate common OWASP Top 10 risks, but do not represent a formal third-party security certification.*
+
+---
+
+## Testing
+
+The backend includes a comprehensive, standalone automated test suite (`server/test-hardening.js`) designed to verify critical business logic and security boundaries without relying on external test frameworks.
+
+To execute the test suite:
+
+```bash
+cd server
+ALLOW_MEMORY_DB=true npm test
+```
+
+### Verified Test Results (27 Passed | 0 Failed)
+
+```
+======================================================
+🛡️  ESTATESOCIAL V1 — PRODUCTION HARDENING SUITE
+======================================================
+
+--- Phase 1: API & Server Readiness ---
+  ✅ [PASS] API is online and responds to /api/health
+
+--- Phase 2: Authentication & Attack Tests ---
+  ✅ [PASS] Missing JWT returns 401 Unauthorized
+  ✅ [PASS] Malformed JWT returns 401 Unauthorized
+  ✅ [PASS] Tampered JWT returns 401 Unauthorized
+  ✅ [PASS] Invalid credentials returns 401
+
+--- Phase 3: Registration & Mass Assignment Defense ---
+  ✅ [PASS] Registering with reserved username "admin" is blocked
+  ✅ [PASS] Self-assigning admin role in registration is neutralized to non-admin
+  ✅ [PASS] User A registers successfully with unique handle
+  ✅ [PASS] User B registers successfully
+  ✅ [PASS] Profile update mass-assignment ignores protected fields (verified/kycStatus/role)
+
+--- Phase 4: IDOR / Access Control Matrix ---
+  ✅ [PASS] User A creates property listing (isFeatured self-assignment stripped to false)
+  ✅ [PASS] IDOR Attack: User B cannot modify User A listing (403 Forbidden)
+  ✅ [PASS] IDOR Attack: User B cannot delete User A listing (403 Forbidden)
+  ✅ [PASS] Legitimate Owner: User A can update their own listing
+
+--- Phase 5: KYC Verification & Admin Security ---
+  ✅ [PASS] Non-admin cannot access Admin KYC queue (403 Forbidden)
+  ✅ [PASS] User submits KYC documents (enters Pending state, verified=false)
+  ✅ [PASS] Non-admin cannot approve KYC verifications (403 Forbidden)
+
+--- Phase 6: Public Data Privacy & Leakage Audit ---
+  ✅ [PASS] Public profile lookup succeeds
+  ✅ [PASS] Privacy: Password hash is absent from public profile
+  ✅ [PASS] Privacy: Sensitive kycData / CNIC is absent from public profile
+  ✅ [PASS] Public listing details query succeeds
+  ✅ [PASS] Privacy: Creator sub-document does NOT leak kycData or password
+
+--- Phase 7: Input Security & Boundary Checks ---
+  ✅ [PASS] Malformed ObjectId does not trigger 500 error (returns 404 safely)
+  ✅ [PASS] Non-existent ObjectId returns 404 cleanly
+  ✅ [PASS] Pagination limit is safely bounded (capped at 50 max)
+  ✅ [PASS] Regex search parameters are escaped without crashing the query
+
+--- Phase 8: Cleanup & Legitimate Deletion ---
+  ✅ [PASS] Legitimate Owner: User A can delete their own listing
+
+======================================================
+🎯 HARDENING TEST SUMMARY: 27 PASSED | 0 FAILED
+======================================================
 ```
 
 ---
@@ -115,10 +292,13 @@ estate-social/
 ## Local Development
 
 ### Prerequisites
-- Node.js (v18 or higher recommended)
-- MongoDB instance (local or MongoDB Atlas connection URI)
+- Node.js (v18 or higher)
+- npm (v9 or higher)
+- MongoDB (local service or MongoDB Atlas connection string)
 
 ### 1. Backend Setup
+
+Open your backend terminal:
 
 ```bash
 cd server
@@ -126,82 +306,85 @@ npm install
 cp .env.example .env
 ```
 
-Configure `server/.env`:
+Configure your `server/.env` variables:
 ```env
 PORT=5000
 NODE_ENV=development
 MONGODB_URI=mongodb://127.0.0.1:27017/estate-marketplace
-JWT_SECRET=your_local_development_secret_key_123
+JWT_SECRET=your_local_development_jwt_secret_key_32_characters
+CORS_ORIGIN=http://localhost:5173
 ALLOW_MEMORY_DB=true
 ```
 
-Start the backend server:
+Start the API server:
 ```bash
 npm run dev
+```
+
+*(Optional) To seed realistic Pakistani development fixtures (verified agents and properties):*
+```bash
+npm run seed:dev
+```
+
+*(Optional) To bootstrap an administrator account:*
+```bash
+BOOTSTRAP_ADMIN_EMAIL=admin@example.com BOOTSTRAP_ADMIN_PASSWORD=SecureAdminPassword123! npm run bootstrap:admin
 ```
 
 ### 2. Frontend Setup
 
+Open your frontend terminal:
+
 ```bash
-cd ../client
+cd client
 npm install
 cp .env.example .env
 ```
 
-Start the frontend development server:
+Start the Vite development server:
 ```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## Testing
+## Deployment
 
-Run the automated hardening and verification suite:
+The repository is structured for standard separation of concerns across cloud providers:
 
-```bash
-cd server
-ALLOW_MEMORY_DB=true npm test
-```
+- **Frontend**: [Vercel](https://vercel.com) (Static SPA build via `npm run build` in `client/`)
+- **Backend API**: [Render](https://render.com) (Web service running `npm start` in `server/`)
+- **Database**: [MongoDB Atlas](https://www.mongodb.com/atlas) (Managed cloud cluster)
 
-### Test Coverage:
-- **Authentication**: Missing, malformed, and tampered JWT token rejection.
-- **Mass Assignment Defense**: Protection against self-assigning `role`, `verified`, and `kycStatus`.
-- **IDOR Protection**: Authorization barriers preventing unauthorized updates or deletions of listings.
-- **Data Privacy**: Public user profiles strictly exclude CNIC, NTN, passwords, and KYC attachments.
-- **Input Security**: ReDoS regex sanitization, malformed MongoDB ObjectId safety, and bounded pagination.
+> **Deployment Note**: No custom domain is currently configured. Public deployment URLs will be provider-generated (e.g. `https://<app>.vercel.app` and `https://<api>.onrender.com`).
 
 ---
 
-## Production Architecture
+## What I Learned
 
-The application is structured for standard cloud platform deployment:
+Building EstateSocial end-to-end provided practical full-stack software engineering experience:
 
-- **Frontend**: Static SPA hosted on [Vercel](https://vercel.com)
-- **Backend API**: Containerized / Node web service hosted on [Render](https://render.com)
-- **Database**: Cloud database hosted on [MongoDB Atlas](https://www.mongodb.com/atlas)
-
-> **Note**: Deployment URLs are provider-generated upon provisioning (e.g. `https://<app>.vercel.app` and `https://<api>.onrender.com`). No custom domain is currently configured.
-
----
-
-## Security Controls
-
-- **Fail-Fast Database Mode**: In `NODE_ENV=production`, the server halts immediately (`process.exit(1)`) if the MongoDB connection is unavailable. In-memory databases are strictly disabled.
-- **Protected Secrets**: In production, startup halts if `JWT_SECRET` is missing, short, or matches insecure default strings.
-- **Strict Privacy Projections**: Public API endpoints explicitly select non-sensitive fields (`PUBLIC_AGENT_FIELDS`), keeping identity documents private to moderators.
-- **Rate Limiting**: Targeted rate limiting applied to authentication, KYC submissions, and general marketplace queries.
+- **Architectural Boundary Separation**: Designing clean contracts between a client-side single page app (SPA) and an Express REST API with centralized middleware.
+- **Domain Modeling with Mongoose**: Structuring complex data models with compound indexes, virtuals, pre-save middleware hooks, and polymorphic category fields.
+- **Predictable State Management**: Implementing asynchronous Redux Toolkit thunks, slice reducers, and optimistic UI updates for favorites and inquiries.
+- **Security Engineering**: Implementing practical defenses against IDOR, NoSQL operator injection, mass-assignment vulnerabilities, and Cross-Site Scripting (XSS).
+- **Adversarial Test Writing**: Constructing automated HTTP test harnesses that simulate hostile user requests and boundary edge cases.
+- **Environment & Lifecycle Management**: Managing development, testing, and production configuration modes with strict database persistence guarantees.
 
 ---
 
-## Version 1 Status
+## Future Direction
 
-Version 1 feature scope is complete and validated for deployment.
+Planned enhancements for future iterations:
+- **Direct S3 / Azure Blob Document Storage**: Encrypted bucket storage for private KYC identity documents.
+- **Agency Subscription Plans**: Stripe / local payment gateway integration for premium agency branding and featured listing slots.
+- **Real-Time Messaging**: Socket.io integration for instant buyer-agent chat alongside WhatsApp lead flows.
+- **Automated NADRA / FBR API Integration**: Automated tax filer and identity verification lookups.
 
 ---
 
 ## License
 
-ISC License. See `server/package.json` for details.
+Root `LICENSE` file is currently unassigned; license choice will be confirmed prior to public open-source distribution. See `server/package.json` for internal dependency metadata.
